@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Temperature extends Migration
+class Temperatures extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Temperature extends Migration
      */
     public function up()
     {
-        Schema::create('temperature', function(Blueprint $table){
+        Schema::create('temperatures', function(Blueprint $table){
             $table->integer('id')->autoIncrement();
             $table->integer('node_id');
             $table->dateTime('datetime');
@@ -30,6 +30,6 @@ class Temperature extends Migration
      */
     public function down()
     {
-        Schema::drop('temperature');
+        Schema::drop('temperatures');
     }
 }

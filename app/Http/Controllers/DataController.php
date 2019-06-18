@@ -26,11 +26,10 @@ class DataController extends Controller
 
     private function recordActivity(Request $request, Carbon $datetime)
     {
-        $nodeActivity = new NodeActivity(
-            $request->input('nodeId'),
-            $request->method(),
-            $datetime->toDateTimeString()
-        );
+        $nodeActivity = new NodeActivity;
+        $nodeActivity->node_id = $request->input('node_id');
+        $nodeActivity->request = $request->method();
+        $nodeActivity->datetime = $datetime->toDateTimeString();
 
         $nodeActivity->save();
 
@@ -39,11 +38,11 @@ class DataController extends Controller
 
     private function recordTemperature(Request $request, Carbon $datetime)
     {
-        $temperature = new Temperature(
-            $request->input('temperature'),
-            $request->input('nodeId'),
-            $datetime->toDateTimeString()
-        );
+        $temperature = new Temperature;
+        $temperature->temperature = $request->input('temperature');
+        $temperature->node_id = $request->input('node_id');
+        $temperature->datetime = $datetime->toDateTimeString();
+
         $temperature->save();
 
         return true;
